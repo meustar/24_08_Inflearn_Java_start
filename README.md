@@ -405,6 +405,14 @@ public class Operator1 {
     }
 }
 ```
+실행결과
+```java
+a + b = 7
+a - b = 3
+a * b = 10
+a / b = 2
+a % b = 1
+```
 - 5 / 2의 결과는 2.5가 되어야 하지만 결과는 소수점이 제거된 2가 나왔다.
   - 자바에서 같은 int형끼리 계산하면 계산 결과도 같은 int형을 사용한다. int형은 정수이기 때문에 소수점 이하를 포함할 수 없다.
 - 나머지 연산자(%)
@@ -420,3 +428,80 @@ public class Operator1 {
 xception in thread "main" java.lang.ArithmeticException: / by zero
 ```
 > 예외가 발생하면 해당 시점 이후의 결과가 출력되지 않고 프로그램이 종료된다.
+---
+
+#### 문자열 더하기
+문자열에 + 연산자를 사용하면 두 문자를 연결할 수 있다.
+```java
+package operator;
+
+public class Operator2 {
+    public static void main(String[] args) {
+
+        // 문자열과 문자열 더하기 1
+        String result1 = "hello " + "world";
+        System.out.println(result1);
+
+        // 문자열과 문자열 더하기 2
+        String s1 = "string1";
+        String s2 = "string2";
+        String result2 = s1 + s2;
+        System.out.println(result2);
+
+        // 문자열과 숫자 더하기 1
+        String result3 = "a + b = " + 10;   // 문자열과 더하는 숫자는 문자열 "10"으로 바꿔서 계산한다.
+        System.out.println(result3);
+
+        // 문자열과 숫자 더하기 2
+        int num = 20;
+        String str = "a + b = ";
+        String result4 = str + num;         //"a + b = " + 20 => "a + b = " + "20" 숫자를 문자열로 바꾼다.
+        System.out.println(result4);
+    }
+}
+```
+실형결과
+```java
+hello world
+string1string2
+a + b = 10
+a + b = 20
+```
+1. 문자열과 문자열 더하기 1
+String result1 = "hello " + "world"
+- "hello "문자열과 "world" 문자열을 더해서 "hello world" 문자열을 만든다.
+- 결과를 result1에 저장한다.
+
+2. 문자열과 문자열 더하기 2
+   String result2 = s1 + s2;
+- s1과 s2 변수에 있는 문자열을 읽는다.
+- "string1" + "string2" 연산을 수행해서"string1string2" 문자열을 만든다.
+- 결과를 result2에 저장한다.
+
+3. 문자열과 숫자 더하기 1
+문자와 숫자를 더하면 숫자를 문자열로 변경한 다음에 서로 더한다.
+- "a + b = " + 10;
+- 문자 : "a + b = "
+- 숫자 : 10
+
+계산과정
+```java
+"a + b = "(String) + 10(int)                // 문자열과 숫자 더하기
+"a + b = "(String) + "10"(int -> String)    // 숫자를 문자열로 변경
+"a + b = " + "10"                           // 문자열과 문자열 더하기
+"a + b = + 10"                              // 결과
+```
+
+4. 문자열과 숫자 더하기 2
+   변수에 담겨 있어도 문자와 숫자를 더하면 문자가 된다.
+계산과정
+```java
+str(String) + num(int)
+"a + b = "(String) + num(int)               // str 변수에서 값 조회
+"a + b = "(String) + 20(int)                // num 변수에서 값 조회
+"a + b = "(String) + "20"(int -> String)    // 숫자를 문자열로 변경
+"a + b = " + "20"                           // 문자열과 문자열 더하기
+"a + b = + 20"                              // 결과
+```
+자바는 문자열인 String 타입에 다른 타입을 더하는 경우 대상 타입을 문자열로 변경한다.
+(문자열에 더하는것은 다 문자열이 된다.)
