@@ -347,3 +347,76 @@ public class Var8 {
 > 참고로 이름은 그 용도를 명확하게 설명해야 한다.
 > - a, b: 단순 예제에서만 사용
 > - studentCount, maxScore, userAccount, orderCount: 용도를 명확하게 설명한다.
+
+
+# Section.4 연산자
+## 산술 연산자
+### 연산자 시작
++, -, *, / 와 같이 계산을 수행하는 기호
+
+#### 연산자 종류
+- 산술 연산자 : +(더하기), -(빼기_, *(곱하기), /(나누기), %(나머지)
+- 증감(증가 및 감소) 연산자 : ++, --
+- 비교 연산자 : ==, !=, >, <, >=, <=
+- 논리 연산자 : &&(AND), ||(OR), ! (NOT)
+- 대입 연산자 : =, +=, -=, *=, /=, %=
+- 삼항 연산자 : ? :
+
+#### 연산자와 피연산자
+
+ 
+> 3 + 4
+> 
+> a + b
+
+- 연산자(operator) : 연산 기호 +, -
+- 피연산자(operand) : 연산 대상 3, 4, a, b
+
+### 1. 산술 연산자.
+```java
+package operator;
+
+public class Operator1 {
+    public static void main(String[] args) {
+
+        // 변수 초기화
+        int a = 5;
+        int b = 2;
+
+        // 덧셈
+        int sum = a + b;
+        System.out.println("a + b = " + sum); // 출력 a + b = 7
+
+        // 뺄셈
+        int diff = a - b;
+        System.out.println("a - b = " + diff);
+
+        // 곱셈
+        int multi = a * b;
+        System.out.println("a * b = " + multi);
+
+        // 나눗셈
+        int div = a / b;    // 5 / 2 -> 2.5 하지만, int는 소수점 표현이 안되는 "정수"이다.
+        System.out.println("a / b = " + div);
+
+        // 나머지
+        int mod = a % b;
+        System.out.println("a % b = " + mod);
+    }
+}
+```
+- 5 / 2의 결과는 2.5가 되어야 하지만 결과는 소수점이 제거된 2가 나왔다.
+  - 자바에서 같은 int형끼리 계산하면 계산 결과도 같은 int형을 사용한다. int형은 정수이기 때문에 소수점 이하를 포함할 수 없다.
+- 나머지 연산자(%)
+  - 이름 그대로 나머지를 구하는 연산자이다. 5 / 2는 몫이 2, 나머지가 1이다. 따라서 나머지 연산자 5 % 2의 결과는 1이 된다.
+  - 나머지 연산자는 실무와 알고리즘 모두 종종 사용된다.
+
+>
+> 주의. 0의로 나누기
+> 10 / 0 과 같이 숫자는 0으로 나눌 수 없다.(수학에서 허용하지 않음)
+> 실행하면 다음과 같은 예외가 출력된다.
+ 
+```java
+xception in thread "main" java.lang.ArithmeticException: / by zero
+```
+> 예외가 발생하면 해당 시점 이후의 결과가 출력되지 않고 프로그램이 종료된다.
