@@ -117,7 +117,7 @@ public class Var2 {
 - 참고로 변수의 값은 반복해서 읽을 수 있다. 변수의 값을 읽는다고 값이 없어지는 것이 아니다.
 
 ### 변수 값 변경
-```java
+```
 a = 10;                 // 1. 변수 a에 10을 저장한다.
 System.out.println(a);  // 2. 변수 a의 값을 읽는다. a에는 10이 들어있어 10을 출력한다.
 a = 50;                 // 3. 변수 a의 값을 50으로 변경한다 a(10 -> 50)
@@ -181,7 +181,7 @@ public class Var6 {
 ```
 #### 초기화 하지 않은 변수 읽기
 에러 발생.
-```java
+```
 java: variable a might not have been initialized
 ```
 - 변수가 초기화되지 않았다는 오류이다.
@@ -195,7 +195,7 @@ java: variable a might not have been initialized
 > 참고:
 > 컴파일 에러는 자바 문법에 맞지 않았을 때 발생하는 에러이다.
 > 컴파일 에러는 오류를 빨리, 그리고 명확하게 찾을 수 있기 때문에 좋은 에러이고, 덕분에 버그를 빠르게 찾아서 고칠 수 있다.
-> ```java
+> ```
 > D:\inflearn_java_start\java-start\src\variable\Var6.java:6:28
 > ```
 > 컴파일 에러가 발생한 위치를 알려준다. 6번째줄 28번째 칸
@@ -221,7 +221,7 @@ public class Var7 {
 }
 ```
 실행결과
-```java
+```
 100
 10.5
 true
@@ -406,7 +406,7 @@ public class Operator1 {
 }
 ```
 실행결과
-```java
+```
 a + b = 7
 a - b = 3
 a * b = 10
@@ -424,7 +424,7 @@ a % b = 1
 > 10 / 0 과 같이 숫자는 0으로 나눌 수 없다.(수학에서 허용하지 않음)
 > 실행하면 다음과 같은 예외가 출력된다.
  
-```java
+```
 xception in thread "main" java.lang.ArithmeticException: / by zero
 ```
 > 예외가 발생하면 해당 시점 이후의 결과가 출력되지 않고 프로그램이 종료된다.
@@ -461,7 +461,7 @@ public class Operator2 {
 }
 ```
 실형결과
-```java
+```
 hello world
 string1string2
 a + b = 10
@@ -485,7 +485,7 @@ String result1 = "hello " + "world"
 - 숫자 : 10
 
 계산과정
-```java
+```
 "a + b = "(String) + 10(int)                // 문자열과 숫자 더하기
 "a + b = "(String) + "10"(int -> String)    // 숫자를 문자열로 변경
 "a + b = " + "10"                           // 문자열과 문자열 더하기
@@ -495,7 +495,7 @@ String result1 = "hello " + "world"
 4. 문자열과 숫자 더하기 2
    변수에 담겨 있어도 문자와 숫자를 더하면 문자가 된다.
 계산과정
-```java
+```
 str(String) + num(int)
 "a + b = "(String) + num(int)               // str 변수에서 값 조회
 "a + b = "(String) + 20(int)                // num 변수에서 값 조회
@@ -505,3 +505,74 @@ str(String) + num(int)
 ```
 자바는 문자열인 String 타입에 다른 타입을 더하는 경우 대상 타입을 문자열로 변경한다.
 (문자열에 더하는것은 다 문자열이 된다.)
+
+#### 연산자 우선순위
+```java
+package operator;
+
+public class Operator3 {
+    public static void main(String[] args) {
+        
+        int sum1 = 1 + 2 * 3;       // 1 + (2 * 3)
+        int sum2 = (1 + 2) * 3;
+        System.out.println("sum1 = " + sum1);
+        System.out.println("sum2 = " + sum2);
+    }
+}
+```
+실행결과
+```
+sum1 = 7
+sum2 = 9
+```
+- 출력 결과 연산자 우선순위에 의해 곱셈이 먼저 계산되었다.
+- 연산자 우선순위를 변경하려면 수학과 마찬가지로 ()를 사용하면 된다.
+
+```java
+package operator;
+
+public class Operator4 {
+    public static void main(String[] args) {
+
+        int sum3 = 2 * 2 + 3 * 3; // (2 * 2) + (3 * 3)
+        int sum4 = (2 * 2) + (3 * 3);   // sum3과 같다.
+        System.out.println("sum3 = " + sum3);
+        System.out.println("sum4 = " + sum4);
+    }
+}
+```
+실행결과
+```
+sum3 = 13
+sum4 = 13
+```
+- 결괏값이 동일하지만 눈에 보이는 명시적인 효과는 다르다.
+- 괄호를 사용하는 것이 더 명확하고 이해하기 쉽다.
+
+**코드를 몇자 줄여서 모호하거나 복잡해 지는 것 보다 코드가 더 많더라도 명확하고 단순한 것이 더 유지보수 하기 좋다.**
+
+#### 연산자 우선순위 암기법
+자바는 연산자간 우선순위가 있다.
+1. 괄화 ()
+2. 단항 연산자 (++, --, !, ~, new, (type))
+3. 산술 연산자 (*, /, % 우선, 그다음에 +, -)
+4. Shift 연산자 (<<, >>, >>>)
+5. 비교 연산자 (<, <=, >, >=, instanceof)
+6. 동식 연산자 (==, !=)
+7. 비트 연산자 (&, ^, |)
+8. 논리 연산자 (&&, ||)
+9. 삼항 연산자 (? :)
+10. 대입 연산자 (=, +=, -=, /=, %= 등등)
+
+실무 개발자들은 연산자 우선순위를 외우지 않는다
+
+- 연산자 우선순위는 딱 2가지만 기억하자.
+1. 상식선에서 우선순위를 사용하자.
+2. 애매하면 괄호()를 사용하자
+
+>**정리**
+>- 연산자 우선순위는 상식선에서 생각하고, 애매하면 괄호를 사용
+>- 누구나 코드를 보고 쉽고 명확하게 이해할 수 있어야 한다. 개발자들이 연산자 우선순위를 외우고 개발하는 것이 아니다. 복잡하면 괄호를 넣어라.
+>- 개발에서 가장 중요한 것은 단순함과 명확함이다. 애매하거나 복잡하면 안된다.
+
+---
