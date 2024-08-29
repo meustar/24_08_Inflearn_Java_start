@@ -662,6 +662,8 @@ a = a + 1;    // 이후에 a의 값을 증가 a = 2
 > **참고**
 > a++, ++a가 단독으로 사용됬을 경우에는 다른 연산이 없기 때문에, 본인의 값만 증가한다.
  
+---
+
 ### 비교 연산자
 두 값을 비교하는데 사용.
 
@@ -699,3 +701,59 @@ public class Comp2 {
     }
 }
 ```
+
+---
+
+### 논리 연산자
+논리연산자는 boolean형인 true, false를 비교하는데 사용한다.
+>
+> - && (그리고) : 두 피연산자가 모두 참이면 참, 둘중 하나라도 거짓이면 거짓을 반환
+> - || (또는) : 두 피연산자 중 하나라도 참이면 참, 둘다 거짓이면 거짓을 반환
+> - ! (부정) : 피연산자의 논리적 부정을 반환, 참이면 거짓을, 거짓이면 참을 반환
+```java
+package operator;
+
+public class Logical1 {
+    public static void main(String[] args) {
+
+        System.out.println("&&: AND 연산");
+        System.out.println(true && true);   // t
+        System.out.println(true && false);  // f
+        System.out.println(false && false); // f
+
+        System.out.println("||: OR 연산");
+        System.out.println(true || true);   // t
+        System.out.println(true || false);  // t
+        System.out.println(false || false); // f
+
+        System.out.println("! 연산");
+        System.out.println(!true);          // f
+        System.out.println(!false);         // t
+
+        System.out.println("변수 활용");
+        boolean a = true;
+        boolean b = false;
+        System.out.println(a && b);         // f
+        System.out.println(a || b);         // t
+        System.out.println(!a);             // f
+        System.out.println(!b);             // t
+    }
+}
+```
+#### 논리 연산자 활용
+```java
+package operator;
+
+public class Logical2 {
+    public static void main(String[] args) {
+
+        int a = 15;
+
+        // a는 10보다 크고 20보다 작다.
+        boolean result = a > 10 && a < 20;      // (a > 10) && (a < 20)
+        System.out.println("result = " + result);
+    }
+}
+```
+---
+
