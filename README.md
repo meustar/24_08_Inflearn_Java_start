@@ -661,3 +661,41 @@ a = a + 1;    // 이후에 a의 값을 증가 a = 2
 
 > **참고**
 > a++, ++a가 단독으로 사용됬을 경우에는 다른 연산이 없기 때문에, 본인의 값만 증가한다.
+ 
+### 비교 연산자
+두 값을 비교하는데 사용.
+
+#### 비교 연산자
+>
+> - == : 동등성 (equal to)
+> - != : 불일치 (not equal to)
+> - \> : 크다 (greater than)
+> - < : 작다 (less than)
+> - \>= : 크거나 같다 (greater than or equal to)
+> - <= : 작거나 같다 (less than or equal to)
+
+비교 연산자를 사용하면 참(true) 또는 거짓(false) 이라는 boolean 형이 나온다.
+
+#### 문자열 비교
+문자열이 같은지 비교할 때는 ==이 아니라 **.equals()** 메서드를 사용해야 한다.
+```java
+package operator;
+
+public class Comp2 {
+    public static void main(String[] args) {
+
+        String str1 = "문자열1";
+        String str2 = "문자열2";
+
+        boolean result1 = "hello".equals("hello");  // 리터럴 비교
+        boolean result2 = str1.equals("문자열1");   // 문자열 변수, 리터럴 비교
+        boolean result3 = str1.equals(str2);        // 문자열 변수 비교
+
+        System.out.println(result1);
+        System.out.println(result2);
+        System.out.println(result3);
+
+        System.out.println("hello" == "hello");
+    }
+}
+```
