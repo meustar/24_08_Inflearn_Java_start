@@ -820,7 +820,7 @@ if (condition) {
         }
 ```
 
-#### if1
+#### if_1
 ```java
 package cond;
 
@@ -882,4 +882,71 @@ public class If2 {
 
 ---
 
+#### if문_2 - else if
+if문으로만 이루어진 코드
+```java
+package cond;
 
+public class If3 {
+    public static void main(String[] args) {
+
+        int age = 6;
+
+        if (age <= 7) {
+            System.out.println("미취학");
+        }
+        if (age >= 8 && age <= 13) {
+            System.out.println("초등학생");
+        }
+        if (age >= 14 && age <= 16) {
+            System.out.println("중학생");
+        }
+        if (age >= 17 && age <= 19) {
+            System.out.println("고등학생");
+        }
+        if (age >= 20) {
+            System.out.println("성인");
+        }
+    }
+}
+```
+이 코드의 단점.
+- 불필요한 조건 검사와 코드 효율성 : 이미 조건을 만족해도 불필요한 다음 조건을 계속 검사하거나, age가 8일 때, 첫번째와 두번째 조건을 중복으로 만족하게 되는 상황이 발생한다.
+
+#### else if
+else if문은 앞선 if문의 조건이 거짓일 때 다음 조건을 검사하며, 참을 만나면 다음 조건을 수행하지 않는다.
+```
+if (condition1) {
+    // 조건 1이 참일 때 실행되는 코드
+} else if (condition2) {
+    // 조건 1이 거짓이고, 조건 2가 참일 때 실행되는 코드
+} else if (condition3) {
+    // 조건 2이 거짓이고, 조건 3이 참일 때 실행되는 코드
+} else {
+    // 모든 조건이 거짓일 때 실행되는 코드
+}
+```
+if문을 하나로 묶는다. 해당 특정 조건이 만족하면 해당 코드를 실행하고 if문 전체를 빠져나온다. 특정 조건을 만족하지 않으면 다음 조건을 검사한다.
+- 즉, 순서대로 맞는 조건을 찾아보고, 맞는 조건이 있으면 그 조건 1가지의 코드 블럭만 실행되는 것이다.
+```java
+package cond;
+
+public class If4 {
+    public static void main(String[] args) {
+
+        int age = 14;
+
+        if (age <= 7) {
+            System.out.println("미취학");
+        } else if (age <= 13) {
+            System.out.println("초등학생");
+        } else if (age <= 16) {
+            System.out.println("중학생");
+        } else if (age <= 19) {
+            System.out.println("고등학생");
+        } else {
+            System.out.println("성인");
+        }
+    }
+}
+```
