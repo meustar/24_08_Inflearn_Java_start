@@ -950,3 +950,124 @@ public class If4 {
     }
 }
 ```
+
+---
+
+#### if문_3 - if문과 else if문
+if문에 else if를 함께 사용하는 것은 서로 연관된 조건일 때 사용한다.
+반대로 서로 관련이 없는 독립 조건이면 else if를 사용하지 않고 if문으로 따로 사용해야 한다.
+```
+// ex_1. if - else 사용 : 서로 연관된 조건이어서, 하나로 묶을 때
+if (condition1) {
+  // 작업 1 수행
+} else if (condition2) {
+  // 작업 2 수행
+}
+
+// ex_2. if 각각 사용: 독립 조건일 때
+if (condition1) {
+  // 작업 1 수행
+}
+if (condition2) {
+  // 작업 2 수행
+}
+```
+ex_1은 작업 1, 작업 2 둘중 하나만 수행, ex_2는 조건만 맞는다면 둘다 수행하거나 둘다 수행 안할 수도 있다.
+
+>
+> - if문에 여러 조건이 있다고 항상 if-else로 묶어서 사용할 수 있는것은 아니다. 조건이 서로 영향을 주지 않고 각각 수행해야 하는 경우에는 else if문을 사용하면 안되고, 각각의 if문으로 분리해서 사용해야 한다.
+> - 여러 독립적인 조건을 검사해야 하는 경우 각 조건이 다른 조건과 연관되지 않고, 각각의 조건에 대해 별도의 작업을 수행해야 할 때 이런 상황이 발생한다.
+
+```java
+package cond;
+
+public class If5 {
+    public static void main(String[] args) {
+
+        int price = 10000;
+        int age = 10;
+        int discount = 0;
+
+        if (price >= 10000) {
+            discount = discount + 1000;
+            System.out.println("10000원 이상 구매, 1000원 할인");
+        }
+        if (age <= 10) {
+            discount = discount + 1000;
+            System.out.println("어린이 1000원 할인");
+        }
+
+        System.out.println("총 할인 금액: " + discount + "원");
+    }
+}
+```
+실행결과
+```
+10000원 이상 구매, 1000원 할인
+어린이 1000원 할인
+총 할인 금액: 2000원
+```
+- 각각 독립된 if문으로 해당되는 모든 할인을 적용한다.
+- 만약, else if를 쓰면, 첫번째로 충족되는 할인만 적용하고 나머지는 무시된다.
+
+if문을 사용해야 할 때 else if를 사용하게 된다면.
+```java
+package cond;
+
+public class If6 {
+    public static void main(String[] args) {
+
+        int price = 10000;
+        int age = 10;
+        int discount = 0;
+
+        if (price >= 10000) {
+            discount = discount + 1000;
+            System.out.println("10000원 이상 구매, 1000원 할인");
+        } else if (age <= 10) {
+            discount = discount + 1000;
+            System.out.println("어린이 1000원 할인");
+        }else {
+            System.out.println("할인 없음");
+        }
+        System.out.println("총 할인 금액: " + discount + "원");
+    }
+}
+```
+실행결과
+```
+10000원 이상 구매, 1000원 할인
+총 할인 금액: 1000원
+```
+- 첫 번쨰로 충족되는 조건인 1000원 할인만 적용되고 if문을 빠져나와 사용자는 나머지 할인을 놓치게 된다.
+
+정리
+> if문을 각각 사용할지, if와 else if를 함께 묶어서 사용할지는 요구사항에 따라 다르다.
+> 둘의 차이를 이해하고 적절하게 사용하면 된다.
+
+#### if문 {중괄호} 생략
+>if문 다음에 실행할 명령이 "하나"만 있을 경우 {중괄호}를 생략할 수 있다.
+> ```
+> if(true)
+>     System.out.println("1");
+> ```
+
+> 두 번째 문장은 if문과 무관하다.
+> ```
+> if(false)
+>     System.out.println("1");  // 거짓으로 출력되지 않음
+>     System.out.println("2");  // if문과 무관하므로 출력에 문제 없음.
+> ```
+
+> 두 문장을 if문 안에 포함하려면 {중괄호}를 사용해야 한다.
+> ```
+> if(true) {
+>     System.out.println("1");
+>     System.out.println("2");
+> }
+> ```
+중괄호를 사용하는 이유
+- 가독성 : 읽기 쉽게 만들어준다. 조건문의 범위가 명확하게 표시되어 코드의 흐름을 쉽게 이해할 수 있다.
+- 유지보수성 : 코드를 수정할 때 오류를 덜 발생 시킬 수 있다. if문에 또 다른 코드를 추가하려 할 때, 중괄호가 없으면 if 문의 일부라는 것이 명확하지 않을 수 있다.
+
+---
