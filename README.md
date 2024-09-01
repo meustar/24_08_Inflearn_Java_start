@@ -1071,3 +1071,114 @@ public class If6 {
 - 유지보수성 : 코드를 수정할 때 오류를 덜 발생 시킬 수 있다. if문에 또 다른 코드를 추가하려 할 때, 중괄호가 없으면 if 문의 일부라는 것이 명확하지 않을 수 있다.
 
 ---
+
+## switch문
+if문은 비교 연산자를 사용할 수 있지만, switch 문은 단순히 값이 같은지만 비교할 수 있다.
+```java
+switch (조건식) {
+    case value1 :
+        // 조건식의 결과 값이 value1일 때 실행되는 코드
+        break;
+    case value1 :
+        // 조건식의 결과 값이 value1일 때 실행되는 코드
+        break;
+    default :
+        // 조건식의 결과 값이 위의 어떤 값에도 해당하지 않을 때 실행되는 코드
+}
+```
+- 조건식의 결과 값이 어떤 case의 값과 일치하면 해당 case의 코드를 실행.
+- break 문은 현재 실행 중인 코드를 끝내고 switch 문을 빠져나가게 하는 역할.
+- 만약 break 문이 없다면, 일치하는 case 이후의 모든 case 코드들이 순서대로 실행.
+- default는 조건식의 결과값이 모든 case의 값과 일치하지 않을 때 실행.
+  - if문의 else와 같고, default 구문은 선택이다.
+- if, else-if, else 구조와 동일하다.
+
+
+if문을 사용한 경우.
+```java
+package cond;
+
+public class Switch1 {
+    public static void main(String[] args) {
+        // 1 : 1000, 2 : 2000, 3 : 3000, 나머지 : 500
+        int grade = 2;
+        int coupon;
+        
+        if (grade == 1) {
+            coupon = 1000;
+        } else if (grade == 2) {
+            coupon = 2000;
+        } else if (grade == 3) {
+            coupon = 3000;
+        } else{
+            coupon = 500;
+        }
+        System.out.println("발급받은 쿠폰 = " + coupon);
+    }
+}
+```
+
+switch문을 사용한 경우
+```java
+package cond;
+
+public class Switch2 {
+    public static void main(String[] args) {
+
+        int grade = 2;
+        int coupon;
+
+        switch (grade) {
+            case 1:
+                coupon = 1000;
+                break;
+            case 2 :
+                coupon = 2000;
+                break;
+            case 3:
+                coupon = 3000;
+                break;
+            default:
+                coupon = 500;
+        }
+        System.out.println("발급받은 쿠폰 : " + coupon);
+    }
+}
+```
+- 만약 switch문의 각 case에 break 문이 없다면. 해당 case에서 중단하여 빠져나오지 않고, 다음 case까지 실행된다.
+- 즉 switch문에는 항상 break를 사용해야 한다.
+
+#### if vs switch
+>
+> - switch문의 조건식을 넣는 부분은  "x > 10"과 같은 "참" 또는 "거짓"의 결과가 나오는 조언이 아니라, 단순히 값만 넣을 수 있다.(문자열 가능)
+> - switch문은 조건식이 특정 case와 같은지만 체크할 수 있다.
+> - 반면에 if문은 참 거짓의 결과가 나오는 조건식을 자유롭게 사용할 수 있다.
+> - 즉, if문이 더 넓은 범위의 조건식으로 switch문 없이 if문으로만 모든 조건문을 만들 수 있다.
+> - 단, 특정 값에 따라 코드를 실행할 때는 switch문이 if문 보다 간결한 코드를 작성할 수 있어 사용한다.
+
+
+#### 자바 14에서 추가된 새로운 switch문
+```java
+package cond;
+
+public class Switch4 {
+    public static void main(String[] args) {
+
+        int grade = 2;
+
+        int coupon = switch (grade) {
+            case 1 -> 1000;
+            case 2 -> 2000;
+            case 3 -> 3000;
+            default -> 500;
+        };
+        System.out.println("발급받은 쿠폰 : " + coupon);
+    }
+}
+```
+기존 switch문과의 차이점
+- ->를 사용한다.
+- 선택된 데이터를 반환할 수 있다.
+
+---
+
