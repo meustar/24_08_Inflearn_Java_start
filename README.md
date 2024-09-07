@@ -1231,3 +1231,32 @@ String status = "성인";                               // 결과
 
 >
 > 삼항 연산자 없이 if문만 사용해도 된다. 하지만 단순히 참과 거짓에 따라서 특정 값을 구하는 삼항 연산자를 사용하면 if문보다 간결한 코드를 작성할 수 있다.
+
+---
+
+# Section.6 반복문
+### 반복문 시작.
+#### while, do-while, for
+- 반복문이 왜 필요한지 이유에 대해서.
+  - 1을 한 번씩 더해서 총 3번 더하는 간단한 코드
+```java
+package loop;
+
+public class While1_1 {
+    public static void main(String[] args) {
+
+        int count = 0;
+
+        count = count + 1;
+        System.out.println("현재 숫자는 : " + count);
+        count = count + 1;
+        System.out.println("현재 숫자는 : " + count);
+        count = count + 1;
+        System.out.println("현재 숫자는 : " + count);
+    }
+}
+```
+> - 같은 코드가 3번 반복되고 있다. 만약 3이 아니라 100번 더하는 코드를 만들어야 할 경우, 이러한 코드를 100번 반복되어야 할 것이다.
+> - 이렇게 특정 코드를 "반복"해서 실행할 때 사용되는 것이 "반복문"이다.
+
+
