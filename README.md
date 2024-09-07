@@ -1259,4 +1259,33 @@ public class While1_1 {
 > - 같은 코드가 3번 반복되고 있다. 만약 3이 아니라 100번 더하는 코드를 만들어야 할 경우, 이러한 코드를 100번 반복되어야 할 것이다.
 > - 이렇게 특정 코드를 "반복"해서 실행할 때 사용되는 것이 "반복문"이다.
 
+### While문 1
+- while문은 조건에 따라서 코드를 반복해서 실행한다.
+```java
+while(조건식) {
+    // 실행 코드
+}
+```
+- 조건식을 확인. 참이면 코드 블럭을 실행하고, 거짓이면 while문을 벗어난다.
+- 조건식이 참이고, 코드 블럭을 실행 후. 다시 조건식 검사에서 참일 경우 무한 반복이 된다.
+  - 거짓일 때 까지 무한루프에 빠지게 된다.
 
+#### while1_2
+```java
+package loop;
+
+public class While1_2 {
+    public static void main(String[] args) {
+
+        int count = 0;
+
+        while(count < 3) {
+            count = count + 1;
+            System.out.println("현재 숫자는 : " + count);
+        }
+    }
+}
+```
+- while (count < 3) 에서 코드 블럭을 반복 실행한다.
+- count의 값이 1, 2, 3으로 점점 커지다 결국 count < 3이 거짓이 되면 while문을 빠져나온다.
+- while(count < 3)에 있는 숫자를 while(count < 100)으로 변경하면 while문의 코드 블럭은 100번 반복한다.
